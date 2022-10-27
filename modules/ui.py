@@ -873,6 +873,8 @@ def create_ui(wrap_gradio_gpu_call):
                         img2img_batch_input_dir = gr.Textbox(label="Input directory", **shared.hide_dirs)
                         img2img_batch_output_dir = gr.Textbox(label="Output directory", **shared.hide_dirs)
                         with gr.Row():
+                            img2img_batch_read_prompts_from_csv = gr.Checkbox(label="Read prompts from 'batch_prompts.csv' in the input directory?", value=False)
+                        with gr.Row():
                             img2img_batch_clip = gr.Button('Interrogate input dir. with CLIP', elem_id="img2img_batch_interrogate")
                             if cmd_opts.deepdanbooru:
                                 img2img_batch_deepbooru = gr.Button('Interrogate input dir. with Deepbooru', elem_id="img2img_batch_interrogate_booru")
@@ -991,6 +993,7 @@ def create_ui(wrap_gradio_gpu_call):
                     inpainting_mask_invert,
                     img2img_batch_input_dir,
                     img2img_batch_output_dir,
+                    img2img_batch_read_prompts_from_csv,
                 ] + custom_inputs,
                 outputs=[
                     img2img_gallery,
